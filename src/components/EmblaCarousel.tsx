@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 function EmblaCarousel() {
   return (
@@ -5,7 +6,9 @@ function EmblaCarousel() {
       <div id="carouselExample" className="carousel slide rounded-lg ">
         <div className="carousel-inner rounded-lg ">
           <div className="carousel-item active">
-            <img
+            <Image
+              width={1000}
+              height={1000}
               src="/image1.jpg"
               className="d-block w-100 h-[500px] rounded-lg "
               style={{ objectFit: "cover" }}
@@ -13,7 +16,9 @@ function EmblaCarousel() {
             />
           </div>
           <div className="carousel-item">
-            <img
+            <Image
+              width={1000}
+              height={1000}
               src="/image2.jpg"
               className="d-block w-100 h-[500px] rounded-lg "
               style={{ objectFit: "cover" }}
@@ -21,7 +26,9 @@ function EmblaCarousel() {
             />
           </div>
           <div className="carousel-item">
-            <img
+            <Image
+              width={1000}
+              height={1000}
               src="/image1.jpg"
               className="d-block w-100 h-[500px] rounded-lg "
               style={{ objectFit: "cover" }}
