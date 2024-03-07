@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react'
 
 function About() {
@@ -13,20 +12,16 @@ function About() {
         <div className="-m-1 flex flex-wrap md:-m-2">
           <div className="flex w-1/2 flex-wrap">
             <div className="w-full p-1 md:p-2 sm:h-[300px] image">
-              <Image
+               <img
                 alt="gallery"
-                width={1000}
-                height={1000}
                 className="block h-full w-full rounded-lg object-cover object-center  "
                 src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp"
               />
             </div>
 
             <div className="w-full p-1 md:p-2 sm:h-[300px] image">
-              <Image
+              <img
                 alt="gallery"
-                width={1000}
-                height={1000}
                 className="block h-full w-full rounded-lg object-cover object-center "
                 src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
               />
@@ -34,10 +29,8 @@ function About() {
           </div>
           <div className="flex w-1/2 flex-wrap image">
             <div className="w-full p-1 md:p-2">
-              <Image
+              <img
                 alt="gallery"
-                width={1000}
-                height={1000}
                 className="block h-full w-full rounded-lg object-cover object-center "
                 src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp"
               />
