@@ -31,6 +31,8 @@ export default function RootLayout({
           <ToastContainer />
           {children}
         </body>
+
+        
       </html>
     </ClerkProvider>
   );
