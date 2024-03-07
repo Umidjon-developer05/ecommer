@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply border px-5 md:px-10 py-2.5 rounded font-semibold transition duration-200 ease-out;
+  }
+}
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+/* scroll style start */
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+/* scroll style end */
+
+a {
+  text-decoration: none !important;
+  color: #222;
+}
+ul {
+  list-style: none !important;
+  color: #222;
+}
+
+/* image animation start */
+.image {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+.image:hover {
+	filter: blur(5px);
+}
+
+/* image animation end */
