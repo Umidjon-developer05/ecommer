@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 function EmblaCarousel() {
   return (
-    <div className="mt-24">
+    <div className="mt-24 w-full">
       <div id="carouselExample" className="carousel slide rounded-lg ">
         <div className="carousel-inner rounded-lg ">
           <div className="carousel-item active">

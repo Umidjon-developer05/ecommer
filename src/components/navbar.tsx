@@ -1,6 +1,5 @@
 "use client";
-import { ProductType } from "@/interfaces";
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Fragment } from "react";
@@ -13,10 +12,15 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 
 const Navbar = () => {
   const { isLoaded, isSignedIn, user } = useUser();
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
   return (
     <header className="flex items-center   px-4 md:px-12 py-2 justify-between fixed top-0 w-full  z-50 shadow bg-white">
-      <Link href={"/"}>
-        <Image src={"/logo.svg"} alt={"logo"} width={150} height={40} />
+      <Link href={"/"} className="text-2xl font-extrabold">
+        Shopping
       </Link>
 
       <div className="flex items-center space-x-2.5 text-sm p-3">
@@ -30,6 +34,80 @@ const Navbar = () => {
           <Link href={"/contacts"} className="mr-5 hover:text-gray-900 ">
             Contacts
           </Link>
+
+          <ul>
+            <li className=" inline px-5 hover:text-purple-700 cursor-pointer font-bold text-base  tracking-wide">
+              <a onClick={toggleDropdown}>Shop</a>
+              <div
+                className={`absolute ${
+                  isDropdownOpen ? "block" : "hidden"
+                } right-72 `}
+              >
+                <ul className=" rounded-lg w-full flex gap-5 bg-white shadow p-4">
+                  <div>
+                    <h3 className="">Pages</h3>
+                    <hr className="w-32 mt-2 " />
+                    <Link
+                      href={"/product/1"}
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <li className="py-1">
+                        <a className="block  font-mono text-xl   hover:text-purple-700 cursor-pointer">
+                          Product
+                          <p className=""> details</p>
+                        </a>
+                      </li>
+                    </Link>
+                    <Link
+                      href={"/contacts"}
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <li className="py-1">
+                        <a className="block font-bold text-base  hover:text-purple-700 cursor-pointer">
+                          Contacts
+                        </a>
+                      </li>
+                    </Link>
+                  </div>
+                  <div>
+                    <h3 className="">Layout</h3>
+                    <hr className="w-32 mt-2" />
+                    <Link
+                      href={"/Price"}
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <li className="py-1">
+                        <a className="block  font-mono text-xl   hover:text-purple-700 cursor-pointer">
+                          Price
+                        </a>
+                      </li>
+                    </Link>
+                    <Link
+                      href={"/products"}
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <li className="py-1">
+                        <a className="block font-bold text-base  hover:text-purple-700 cursor-pointer">
+                          All Products
+                        </a>
+                      </li>
+                    </Link>
+                    <Link
+                      href={"/shopping-cart"}
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <li className="py-1">
+                        <a className="block font-bold text-base  hover:text-purple-700 cursor-pointer">
+                          Cart
+                        </a>
+                      </li>
+                    </Link>
+                  </div>
+                </ul>
+              </div>
+            </li>
+          </ul>
+
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -97,7 +175,6 @@ const Navbar = () => {
                       </Link>
                     )}
                   </Menu.Item>
-                
                 </div>
               </Menu.Items>
             </Transition>
