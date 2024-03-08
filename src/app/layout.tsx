@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Navbar />
           <ToastContainer />
           {children}
+          <Footer/>
         </body>
         <script
           async

@@ -33,26 +33,8 @@ export const PricingCard = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onSubmit = async () => {
-    if (price === "Free") {
       router.push("/");
       return;
-    }
-    setIsSubmitting(true);
-
-    try {
-      const data = await axios.post("/api/stripe/subscription", {
-        priceId,
-        email: user?.emailAddresses[0].emailAddress,
-        userId: user?.id,
-      });
-      console.log(data);
-      
-      // window.open(data, "_self");
-      setIsSubmitting(false);
-    } catch (error) {
-      setIsSubmitting(false);
-      toast.error("Something went wrong. Please try again.");
-    }
   };
 
   return (
@@ -70,11 +52,7 @@ export const PricingCard = ({
         <span className="text-gray-500 dark:text-gray-400">/month</span>
       </div>
 
-      {/* {isLoading && (
-        <div className="w-full flex justify-center items-center">
-          <Loader />
-        </div>
-      )} */}
+   
 
       {isAuthenticated && !isLoading && (
         <Button onClick={onSubmit} disabled={isSubmitting}>

@@ -1,5 +1,4 @@
 import About from "@/components/About";
-import Cta from "@/components/cta";
 import EmblaCarousel from "@/components/EmblaCarousel";
 import Product from "@/components/product";
 import Statistics from "@/components/statistics";
@@ -24,7 +23,6 @@ export default async function Home() {
             ))}
           </div>
         </section>
-        <Cta />
         <Statistics />
       </main>
     </>

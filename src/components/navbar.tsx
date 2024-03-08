@@ -13,17 +13,17 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 const Navbar = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  
+
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
   return (
-    <header className="flex items-center   px-4 md:px-12 py-2 justify-between fixed top-0 w-full  z-50 shadow bg-white">
+    <header className="flex items-center px-4 md:px-12 py-2 justify-between fixed top-0 w-full  z-50 shadow bg-white">
       <Link href={"/"} className="text-2xl font-extrabold">
         Shopping
       </Link>
 
-      <div className="flex items-center space-x-2.5 text-sm p-3">
+      <div className="flex items-center space-x-2.5 text-sm p-2">
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <Link href={"/"} className="mr-5 hover:text-gray-900">
             Home page
@@ -36,12 +36,30 @@ const Navbar = () => {
           </Link>
 
           <ul>
-            <li className=" inline px-5 hover:text-purple-700 cursor-pointer font-bold text-base  tracking-wide">
-              <a onClick={toggleDropdown}>Shop</a>
+            <li className=" inline px-5 cursor-pointer font-bold text-base  tracking-wide">
+              <a className="flex items-center h-full " onClick={toggleDropdown}>
+                <span>Shop</span>
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1"
+                    stroke="currentColor"
+                    className="h-4 w-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </span>
+              </a>
               <div
                 className={`absolute ${
                   isDropdownOpen ? "block" : "hidden"
-                } right-72 `}
+                } right-48 top-24 `}
               >
                 <ul className=" rounded-lg w-full flex gap-5 bg-white shadow p-4">
                   <div>
@@ -52,7 +70,7 @@ const Navbar = () => {
                       onClick={() => setDropdownOpen(false)}
                     >
                       <li className="py-1">
-                        <a className="block  font-mono text-xl   hover:text-purple-700 cursor-pointer">
+                        <a className="block  font-mono text-xl   cursor-pointer">
                           Product
                           <p className=""> details</p>
                         </a>
@@ -63,7 +81,7 @@ const Navbar = () => {
                       onClick={() => setDropdownOpen(false)}
                     >
                       <li className="py-1">
-                        <a className="block font-bold text-base  hover:text-purple-700 cursor-pointer">
+                        <a className="block font-bold text-base  cursor-pointer">
                           Contacts
                         </a>
                       </li>
@@ -77,7 +95,7 @@ const Navbar = () => {
                       onClick={() => setDropdownOpen(false)}
                     >
                       <li className="py-1">
-                        <a className="block  font-mono text-xl   hover:text-purple-700 cursor-pointer">
+                        <a className="block  font-mono text-xl   cursor-pointer">
                           Price
                         </a>
                       </li>
@@ -87,7 +105,7 @@ const Navbar = () => {
                       onClick={() => setDropdownOpen(false)}
                     >
                       <li className="py-1">
-                        <a className="block font-bold text-base  hover:text-purple-700 cursor-pointer">
+                        <a className="block font-bold text-base  cursor-pointer">
                           All Products
                         </a>
                       </li>
@@ -97,7 +115,7 @@ const Navbar = () => {
                       onClick={() => setDropdownOpen(false)}
                     >
                       <li className="py-1">
-                        <a className="block font-bold text-base  hover:text-purple-700 cursor-pointer">
+                        <a className="block font-bold text-base  cursor-pointer">
                           Cart
                         </a>
                       </li>
@@ -108,77 +126,7 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                Options
-                <ChevronDownIcon
-                  className="-mr-1 h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        href="/Account"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Account settings
-                      </Link>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        Support
-                      </Link>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        href="#"
-                        className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
-                        )}
-                      >
-                        License
-                      </Link>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
+       
         </nav>
         <div className="flex items-center gap-2">
           <Link href={"/shopping-cart"} className="relative">
