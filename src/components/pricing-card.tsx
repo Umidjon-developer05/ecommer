@@ -3,11 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/ui/loader";
 import { SignInButton } from "@clerk/clerk-react";
-import { useConvexAuth } from "convex/react";
 import { Check } from "lucide-react";
 import React, { useState } from "react";
-import { toast } from "sonner";
-import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
 import { useRouter } from "next/navigation";
 
@@ -26,7 +23,6 @@ export const PricingCard = ({
   title,
   priceId,
 }: PricingCardProps) => {
-  const { isAuthenticated, isLoading } = useConvexAuth();
   const { user } = useUser();
   const router = useRouter();
 
@@ -54,7 +50,7 @@ export const PricingCard = ({
 
    
 
-      {isAuthenticated && !isLoading && (
+      {user  && (
         <Button onClick={onSubmit} disabled={isSubmitting}>
           {isSubmitting ? (
             <>
