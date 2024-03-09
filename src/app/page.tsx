@@ -1,7 +1,6 @@
 import About from "@/components/About";
 import EmblaCarousel from "@/components/EmblaCarousel";
 import Product from "@/components/product";
-import Statistics from "@/components/statistics";
 import { ProductType } from "@/interfaces";
 
 export default async function Home() {
@@ -23,7 +22,6 @@ export default async function Home() {
             ))}
           </div>
         </section>
-        <Statistics />
       </main>
     </>
   );

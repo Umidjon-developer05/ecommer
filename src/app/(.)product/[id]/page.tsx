@@ -14,7 +14,7 @@ const ProductDetailedPage = () => {
   const [product, setProduct] = useState<ProductType>();
 
   const { id } = useParams();
-
+  
   const handleClick = () => {
     const products: ProductType[] =
       JSON.parse(localStorage.getItem("carts") as string) || [];
@@ -38,7 +38,8 @@ const ProductDetailedPage = () => {
       const data = [...products, { ...product, quantity: 1 }];
       localStorage.setItem("carts", JSON.stringify(data));
     }
-    toast("Product added to your bag!!");
+    toast.success(` Product add successful!!`);
+
   };
 
   useEffect(() => {

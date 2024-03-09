@@ -2,9 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { UserButton, useUser } from "@clerk/nextjs";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { ProductType } from "@/interfaces";
 
 function classNames(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -13,7 +11,10 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 const Navbar = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+   const products: ProductType[] =
+     JSON.parse(localStorage.getItem("carts") as string) || [];
+  console.log(products.length);
+  
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
@@ -125,26 +126,26 @@ const Navbar = () => {
               </div>
             </li>
           </ul>
-
-       
         </nav>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mx-4">
           <Link href={"/shopping-cart"} className="relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="23"
-              height="23"
-              fill="currentColor"
-              className="bi bi-cart2"
-              viewBox="0 0 16 16"
-            >
-              <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
-            </svg>
-            <div
-              className="absolute -top-3 -right-3 bg-red-500 text-white w-5 flex justify-center items-center "
-              style={{ borderRadius: "50%" }}
-            >
-              {0}
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="23"
+                height="24"
+                fill="currentColor"
+                className="bi bi-cart2"
+                viewBox="0 0 16 16"
+              >
+                <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+              </svg>
+              <div
+                className="absolute -top-3 -right-3 bg-red-500 text-white w-5 flex justify-center items-center "
+                style={{ borderRadius: "50%" }}
+              >
+                {products.length}
+              </div>
             </div>
           </Link>
           {user ? (
